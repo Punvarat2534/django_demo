@@ -73,7 +73,16 @@ WSGI_APPLICATION = 'diis.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-
+DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'lrclibrary',
+            'USER': 'avnadmin',
+            'PASSWORD': 'AVNS_q4temUKuILAc_NhZStK',
+            'HOST': 'pg-3147fb60-punvarat-7a2d.k.aivencloud.com', 
+            'PORT': '22067',  
+        }
+    }
 
 
 # Password validation
