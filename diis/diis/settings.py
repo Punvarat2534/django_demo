@@ -78,7 +78,7 @@ DATABASES = {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'lrclibrary',
             'USER': 'avnadmin',
-            'PASSWORD': 'AVNS_q4temUKuILAc_NhZStK',
+            #'PASSWORD': 'AVNS_q4temUKuILAc_NhZStK',
             'HOST': 'pg-3147fb60-punvarat-7a2d.k.aivencloud.com',  # Or your PostgreSQL server's IP/hostname
             'PORT': '22067',  
         }
