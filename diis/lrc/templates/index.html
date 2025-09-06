@@ -1,0 +1,35 @@
+
+{% extends "layouts.html" %}
+{% block title %}Home{% endblock %}
+ {% block content %}
+
+  <div class="col col-md-8 col-sm-12">
+  <span style="color:#840032;font-size:16pt;"><b> <i class="fa fa-bookmark"></i> Manuals</b></span>
+  <br><br>
+  <table class="table">
+    <tr style="border:1px solid #aaa;">
+      <th>เลขหนังสือ</th>
+      <th>ชื่อหนังสือ</th>
+      <th>ผู้แต่ง</th>
+       <th>ปีที่พิมพ์</th>
+       <th>ผู้จัดพิมพ์</th>
+      <th></th>
+    </tr>
+
+    {% for books in books_list %}
+    <tr>
+      <td>{{ books.isbn }}</td>
+      <td>{{ books.title }}</td>
+      <td>{{ books.author }}</td>
+      <td>{{ books.year }}</td>
+      <td>{{ books.publisher }}</td>
+      <td>
+       <a class="btn btn-default" style="color:#840032;border:1px solid gray;"><i class="fa fa-pencil"></i></a>
+      </td>
+    </tr>
+    {% endfor %}
+  
+  </table>
+  </div>
+ {% endblock %}
+
