@@ -4,9 +4,9 @@ from lrc import views as lrc
 
 urlpatterns = [
     path('',  lrc.show, name='show'),
-    path('/books/detail/<int:id>', lrc.detail, name='detail'),
+    path('show',  lrc.show, name='show'),
+    path('books/detail/<int:id>', lrc.detail, name='detail'),
+    path('books/create', lrc.create, name='create'),
 
-    #path('/',  lrc.members, name='members'),
-    #path('members/', lrc.members, name='members'),
-    path('admin/', admin.site.urls),
+    
 ]

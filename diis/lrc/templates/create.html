@@ -1,0 +1,54 @@
+
+{% extends "layouts.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<style>
+    .myfieldclass{
+        width:100%;
+        border:1px solid gray;
+    }
+</style>
+<div class="col col-md-8 col-sm-12">
+
+<form method="POST" style="width:100%;" action="{% url 'create' %}"  enctype="multipart/form-data">  
+{% csrf_token %}  
+      
+{{ form.non_field_errors}}
+
+    <table class="table">
+        <tr>
+            <td>ภาพปก</td>
+            <td> <input type="file" class="form-control" name="image_s">
+            </td>
+        </tr>
+        <tr>
+            <td>เลขหนังสือ</td>
+            <td>
+                {{form.isbn}}
+            </td>
+        </tr>
+        <tr>
+            <td>ชื่อหนังสือ</td>
+            <td>{{form.title}}</td>
+        </tr>
+        <tr>
+            <td>ผู้แต่ง</td>
+            <td>{{form.author}}</td>
+        </tr>
+        <tr>
+            <td>ปีที่พิมพ์</td>
+            <td>{{form.year}}</td>
+        </tr>
+        <tr>
+            <td>ผู้จัดพิมพ์</td>
+            <td>{{form.publisher}}</td>
+        </tr>
+    </table>
+    <center>
+    <button type="submit" class="btn btn-primary">บันทึกการเปลี่ยนแปลง</button>
+    </center>
+    <br><br>
+</form>
+</div>
+ {% endblock %}
+
