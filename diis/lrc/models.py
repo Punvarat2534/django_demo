@@ -13,8 +13,8 @@ class book_detail(models.Model):
     year = models.CharField("year", max_length=10, blank = True, null = True)
     publisher = models.CharField("publisher", max_length=50, blank = True, null = True)
     image_s = models.CharField("image_s",max_length=100, blank = True, null = True)
-    image_m = models.CharField("image_s",max_length=100, blank = True, null = True)
-    image_l = models.CharField("image_s",max_length=100, blank = True, null = True)
+    image_m = models.CharField("image_m",max_length=100, blank = True, null = True)
+    image_l = models.CharField("image_l",max_length=100, blank = True, null = True)
     deleted_at = models.DateTimeField("deleted_at", auto_now_add=True)
     
     class Meta:  

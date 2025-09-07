@@ -8,6 +8,7 @@
   <br><br>
   <table class="table">
     <tr style="border:1px solid #aaa;">
+      <th></th>
       <th>เลขหนังสือ</th>
       <th>ชื่อหนังสือ</th>
       <th>ผู้แต่ง</th>
@@ -18,6 +19,7 @@
 
     {% for books in books_list %}
     <tr>
+      <td><img src="{{ books.image_s }}"></td>
       <td>{{ books.isbn }}</td>
       <td>{{ books.title }}</td>
       <td>{{ books.author }}</td>
