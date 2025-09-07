@@ -26,7 +26,7 @@
       <td>{{ books.year }}</td>
       <td>{{ books.publisher }}</td>
       <td>
-       <a class="btn btn-default" style="color:#840032;border:1px solid gray;"><i class="fa fa-pencil"></i></a>
+       <a href="{% url 'detail' books.pk %}" target="_blank" class="btn btn-default" style="color:#840032;border:1px solid gray;"><i class="fa fa-pencil"></i></a>
       </td>
     </tr>
     {% endfor %}

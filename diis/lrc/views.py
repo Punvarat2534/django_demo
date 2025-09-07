@@ -14,3 +14,7 @@ def show(request):
         #return render(request,"index.html",{'citizens_list':citizens})  
     #else:
       #return redirect('/login') 
+
+def detail(request, id): 
+    books = book_detail.objects.get(pk=id)
+    return render(request,"edit.html",{'books':books})  

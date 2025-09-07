@@ -3,7 +3,37 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 <div class="col col-md-8 col-sm-12">
-    
+    <table class="table">
+        <tr>
+            <td>ภาพปก</td>
+            <td><img src="{{books.image_m}}">
+                <br><br><input type="file" class="form-control" id="file" name="file"></td>
+        </tr>
+        <tr>
+            <td>เลขหนังสือ</td>
+            <td><input type="text" class="form-control" id="isbn" name="isbn" value="{{books.isbn}}"></td>
+        </tr>
+        <tr>
+            <td>ชื่อหนังสือ</td>
+            <td><input type="text" class="form-control" id="title" name="title" value="{{books.title}}"></td>
+        </tr>
+        <tr>
+            <td>ผู้แต่ง</td>
+            <td><input type="text" class="form-control" id="author" name="author" value="{{books.author}}"></td>
+        </tr>
+        <tr>
+            <td>ปีที่พิมพ์</td>
+            <td><input type="text" class="form-control" id="year" name="year" value="{{books.year}}"></td>
+        </tr>
+        <tr>
+            <td>ผู้จัดพิมพ์</td>
+            <td><input type="text" class="form-control" id="publisher" name="publisher" value="{{books.publisher}}"></td>
+        </tr>
+    </table>
+    <center>
+    <button type="submit" class="btn btn-primary">บันทึกการเปลี่ยนแปลง</button>
+    </center>
+    <br><br>
 </div>
  {% endblock %}
 
