@@ -18,34 +18,34 @@
     <table class="table">
         <tr>
             <td>ภาพปก</td>
-            <td> <input type="file" class="form-control" name="image_s">
+            <td> <input type="file" class="form-control" name="image_s" required>
             </td>
         </tr>
         <tr>
             <td>เลขหนังสือ</td>
-            <td>
-                {{form.isbn}}
-            </td>
+            <td><input type="text" class="form-control" id="isbn" name="isbn" required></td>
         </tr>
         <tr>
             <td>ชื่อหนังสือ</td>
-            <td>{{form.title}}</td>
+            <td><input type="text" class="form-control" id="title" name="title" required></td>
         </tr>
         <tr>
             <td>ผู้แต่ง</td>
-            <td>{{form.author}}</td>
+            <td><input type="text" class="form-control" id="author" name="author" required></td>
         </tr>
         <tr>
             <td>ปีที่พิมพ์</td>
-            <td>{{form.year}}</td>
+            <td><input type="text" class="form-control" id="year" name="year" required></td>
         </tr>
         <tr>
             <td>ผู้จัดพิมพ์</td>
-            <td>{{form.publisher}}</td>
+            <td><input type="text" class="form-control" id="publisher" name="publisher" required></td>
         </tr>
         <tr>
             <td>รายละเอียด</td>
-            <td>{{form.description}}</td>
+            <td>
+                <textarea class="form-control" id="description" name="description" required></textarea>
+            </td>
         </tr>
     </table>
     <center>

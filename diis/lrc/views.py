@@ -8,47 +8,57 @@ from .models import book_detail as book_detail
 from .forms import BookForm
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
-
+from .models import book_description as book_description
 
 def show(request): 
-  
-    #if User.is_authenticated: 
-        
-        books = book_detail.objects.raw('SELECT * FROM public.book_detail INNER JOIN public.book_description ON book_description.isbn=book_detail.isbn')
-        #books = book_detail.objects.extra(tables=['book_description'],where=["book_description.isbn=book_detail.isbn"]) 
-        return render(request,"index.html",{'books_list':books})  
+    #if User.is_authenticated:     
+    books = book_detail.objects.raw('SELECT * FROM public.book_detail INNER JOIN public.book_description ON book_description.isbn=book_detail.isbn')
+    #books = book_detail.objects.extra(tables=['book_description'],where=["book_description.isbn=book_detail.isbn"]) 
+    return render(request,"index.html",{'books_list':books})  
     #else:
       #return redirect('/login') 
 
 def detail(request, id): 
-    
-    books = book_detail.objects.get(pk=id)
-    #books = book_detail.objects.filter(id=id).select_related()
+    #books = book_detail.objects.get(pk=id)
+    books = book_detail.objects.raw("SELECT * FROM public.book_detail INNER JOIN public.book_description ON book_description.isbn=book_detail.isbn where book_detail.id=%s",[id])[0]
+    return render(request, 'edit.html', {'books': books})
 
-    #books = book_detail.objects.raw("SELECT * FROM public.book_detail INNER JOIN public.book_description ON book_description.isbn=book_detail.isbn where book_detail.id=1")
-
-    return render(request,"edit.html",{'books':books})  
+def insert(request): 
+    return render(request,'create.html')   
 
 def create(request):  
-    if request.method == "POST":  
-        form = BookForm(request.POST, request.FILES)
-        if form.is_valid():
-            try: 
-                handle_uploaded_file(request.FILES["image_s"])
-                form.image_s = "localhost"
-                form.save()  
-                return redirect('/')  
-            except:  
-                pass  
-    else:  
-        form = BookForm()  
-    return render(request,'create.html',{'form':form})  
+
+    image = request.FILES["image_s"]
+    books =  book_detail()
+    books.isbn = request.POST["isbn"]
+    books.title = request.POST["title"]
+    books.author = request.POST["author"]
+    books.year = request.POST["year"]
+    books.publisher = request.POST["publisher"]
+    books.image_s = 'http://127.0.0.1:8000/media/'+image.name
+    books.image_m = 'http://127.0.0.1:8000/media/'+image.name
+    books.image_l = 'http://127.0.0.1:8000/media/'+image.name
+    books.save()
+       
+    handle_uploaded_file(image)
+
+    description = book_description()
+    description.isbn = request.POST.get("isbn")
+    description.description = request.POST.get("description")
+    description.save()
+    return redirect('/')
+      
 
 def handle_uploaded_file(f):  
-    with open('lrc/uploads/'+f.name, 'wb+') as destination:  
+    with open('media/'+f.name, 'wb+') as destination:  
         for chunk in f.chunks():
             destination.write(chunk)  
 
+
+def update(request, id):  
+    obj = Product.objects.get(pk=pk)
+    obj.name = "some_new_value"
+    obj.save()
 
 #================example query================
 
@@ -70,7 +80,7 @@ def handle_uploaded_file(f):
 #books = book_detail.objects.all()  
 #books = book_detail.objects.filter(deleted_at=None).values()
 #books = book_detail.objects.filter(deleted_at=None).filter(isbn='0374270325').select_related()
-
+#books = book_detail.objects.get(pk=id)
 
 #books = book_detail.objects.extra(tables=['book_description'],where=["book_description.isbn = book_detail.isbn"]) 
 
