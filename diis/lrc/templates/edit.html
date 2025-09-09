@@ -5,6 +5,10 @@
 <div class="col col-md-8 col-sm-12">
     <table class="table">
         <tr>
+            <td></td>
+            <td><a style="float:right" class="btn btn-danger">ลบ</a></td>
+        </tr>
+        <tr>
             <td>ภาพปก</td>
             <td><img src="{{books.image_m}}">
                 <br><br><input type="file" class="form-control" id="file" name="file"></td>
@@ -28,6 +32,10 @@
         <tr>
             <td>ผู้จัดพิมพ์</td>
             <td><input type="text" class="form-control" id="publisher" name="publisher" value="{{books.publisher}}"></td>
+        </tr>
+        <tr>
+            <td>รายละเอียด</td>
+            <td><input type="text" class="form-control" id="description" name="description" value="{{books.description}}"></td>
         </tr>
     </table>
     <center>

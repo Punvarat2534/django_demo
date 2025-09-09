@@ -23,7 +23,7 @@ class BookForm(forms.ModelForm):
             }), 
             'publisher': forms.TextInput(attrs={
                 'class': 'form-control','required': True
-            }),
+            })
         }
         
         
